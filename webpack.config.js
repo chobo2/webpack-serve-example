@@ -49,5 +49,41 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true
-  }
+  },
+  serve: {
+    open: true,
+    open: { app: 'Chrome', path: '/' }, // this does not open
+    mode: 'development', // how to dwitch between dev and prodction?
+    port: 8080,
+    hot: {
+      hot: true
+    },
+    add: (app, middleware, options) => {
+      middleware.webpack();
+      middleware.content();
+      app.use(router.routes()); // guess got to add more to this to get it to work
+    }
+  },
 };
+
+// module.exports.serve = {
+//   add: (app, middleware, options) => { // eslint-disable-line no-unused-vars
+//     app.use((ctx, next) => {
+//       ctx.set('X-Custom-Middleware', 'owns');
+//       return next();
+//     });
+//
+//     // middleware.webpack();
+//     // middleware.content();
+//   },
+//   content: [__dirname],
+//   dev: {
+//     headers: { 'X-Foo': 'Kachow' }
+//   },
+//   hot: {
+//     logLevel: 'info',
+//     logTime: true
+//   }
+//   // open: true
+//   // open: { app: 'Firefox', path: '/foo' }
+// };
