@@ -21,6 +21,15 @@ module.exports = {
             presets: ["env", "react"]
           }
         }
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}  
+          }
+        ]
       }
     ]
   },
