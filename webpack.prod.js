@@ -6,7 +6,7 @@ const common = require("./webpack.common.js");
 module.exports = merge(common, {
   // Provides process.env.NODE_ENV with value development.
   // Enables NamedChunksPlugin and NamedModulesPlugin.
-  mode: "development",
+  mode: "production",
   devtool: "inline-source-map",
   // configure `webpack-serve` options here
   serve: {
