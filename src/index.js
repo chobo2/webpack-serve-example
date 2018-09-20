@@ -14,7 +14,7 @@ import stores from '../src/stores/Stores';
 
 const history = syncHistoryWithStore(browserHistory, stores.routingStore);
 
-configure({ enforceActions: true});
+configure({ enforceActions: "observed"});
 
 ReactDOM.render(
     <Provider {... stores}>

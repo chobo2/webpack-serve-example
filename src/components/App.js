@@ -5,6 +5,7 @@ import { withRouter, Route, Link } from "react-router-dom";
 
 import HomeComponent from "./HomeComponent"
 import ParamRouteComponent from "./ParamRouteComponent"
+import TestComponent from "./TestComponent";
 
 @withRouter
 @inject("routingStore")
@@ -20,9 +21,11 @@ export default class App extends Component {
     return (
       <React.Fragment>
         <Link to="/">Home</Link><br />
-        <Link to="/test/company/1/employee/1">Param Route</Link>
+        <Link to="/test/company/1/employee/1">Param Route</Link> <br />
+        <Link to="/test/why">Why Does This do full re-render</Link>
         <Route exact path="/" component={HomeComponent} />
         <Route path="/test/company/:companyId/employee/:employeeId" component={ParamRouteComponent} />
+        <Route path="/test/why" component={TestComponent} />
       </React.Fragment>
     );
   }

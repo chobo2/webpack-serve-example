@@ -1,13 +1,10 @@
 const path = require("path");
 const merge = require("webpack-merge");
-
-const common = require("./webpack.common.js");
-const Router = require('koa-router');
 const convert = require("koa-connect");
 const proxy = require("http-proxy-middleware");
 const historyApiFallback = require("koa2-connect-history-api-fallback");
 
-const router = new Router();
+const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
   // Provides process.env.NODE_ENV with value development.
