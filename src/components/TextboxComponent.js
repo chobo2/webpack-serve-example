@@ -4,7 +4,6 @@ import { observable, action } from 'mobx';
 import { withRouter } from 'react-router-dom';
 
 @withRouter
-@inject('routingStore')
 @observer
 export default class TextboxComponent extends Component {
   @observable
@@ -23,8 +22,16 @@ export default class TextboxComponent extends Component {
   handleChange = event => {
     const name = event.target.name;
     const value = event.target.value;
-    this[name] = value;
-    this.props.history.replace("/test/why?param=1");
+    this.min = value;
+    // this.props.history.replace("/test/why?param=1");
+  };
+
+  @action
+  onBlurChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.min = value;
+     this.props.history.replace("/test/why?param=1");
   };
 
   render() {
@@ -36,6 +43,7 @@ export default class TextboxComponent extends Component {
               name="min"
               value={this.min}
               placeholder="Min"
+              onBlur={this.onBlurChange}
               onChange={this.handleChange}
             />
       </div>
